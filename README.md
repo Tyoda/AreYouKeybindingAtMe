@@ -1,0 +1,2 @@
+# AreYouKeybindingAtMe
+This is a Wurm Unlimited mod that solves an issue of keybindings.txt filling up with duplicate bindings in certain circumnstances, as seen in this thread: https://forum.wurmonline.com/index.php?/topic/200150-keybindingstxt-file-duplcating-binds/&tab=comments#comment-1985112
