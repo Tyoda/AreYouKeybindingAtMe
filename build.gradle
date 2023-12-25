@@ -1,0 +1,42 @@
+
+plugins {
+    id 'idea'
+    id 'java'
+}
+
+group 'org.tyoda.wurm.client.aykam'
+version '1.0'
+
+repositories {
+    mavenCentral()
+    maven { url "https://gotti.no-ip.org/maven/repository" }
+    maven { url 'https://jitpack.io' }
+}
+
+
+var clientJar = files("../../libraries/client/client-patched.jar")
+var commonJar = files("../../libraries/client/common.jar")
+
+dependencies {
+    if(clientJar){
+        implementation(clientJar)
+    }
+    if(commonJar){
+        implementation(commonJar)
+    }
+    implementation 'org.gotti.wurmunlimited:client-modlauncher:0.14'
+}
+
+jar {
+    archiveFileName = "${project.name}.jar"
+}
+
+task dist(type: Zip) {
+    into("mods", {
+        into(project.name, {
+            from jar
+        })
+        from fileTree(dir: 'mods', include: '*')
+    })
+    archiveFileName = "${project.name}-${project.version}.zip"
+}
